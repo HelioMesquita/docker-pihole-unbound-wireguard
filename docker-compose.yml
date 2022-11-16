@@ -40,6 +40,21 @@ services:
       private_network:
         ipv4_address: 10.2.0.200
 
+   duckdns:
+    image: lscr.io/linuxserver/duckdns:latest
+    container_name: duckdns
+    environment:
+      - TZ=America/Sao_Paulo
+      - SUBDOMAINS=${SUBDOMAIN}
+      - TOKEN=${DUCKTOKEN}
+      - LOG_FILE=true
+    volumes:
+      - ./duck_files/:/config #optional
+    restart: unless-stopped
+    networks:
+      private_network:
+        ipv4_address: 10.2.0.300
+
 networks:
   private_network:
     ipam:
