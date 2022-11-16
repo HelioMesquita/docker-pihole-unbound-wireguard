@@ -40,7 +40,7 @@ services:
       private_network:
         ipv4_address: 10.2.0.200
 
-   duckdns:
+  duckdns:
     image: lscr.io/linuxserver/duckdns:latest
     container_name: duckdns
     environment:
