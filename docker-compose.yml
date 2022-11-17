@@ -30,8 +30,8 @@ services:
     image: mvance/unbound:latest
     hostname: syn-unbound
     ports:
-      - "5335:53/tcp"
-      - "5335:53/udp"
+      - "53/tcp"
+      - "53/udp"
     # volumes:
     #   - "./unbound:/opt/unbound/etc/unbound"
     restart: unless-stopped
@@ -54,7 +54,7 @@ services:
         ipv4_address: 10.2.0.300
   apache:
     image: httpd:latest
-    container_name: my-apache-app
+    container_name: site
     ports:
     - '8080:80'
     volumes:
