@@ -49,9 +49,6 @@ services:
     volumes:
       - ./duck_files/:/config #optional
     restart: unless-stopped
-    networks:
-      private_network:
-        ipv4_address: 10.2.0.300
   apache:
     image: httpd:latest
     container_name: site
