@@ -9,7 +9,7 @@ services:
     ports:
       - "53:53/tcp"
       - "53:53/udp"
-      - "81:80/tcp"
+      - "80:80/tcp"
     environment:
       - FTLCONF_LOCAL_IPV4=10.2.0.100
       - WEBPASSWORD=${WEBPASSORD}
@@ -52,13 +52,13 @@ services:
   #   networks:
   #     private_network:
   #       ipv4_address: 10.2.0.300
-  # apache:
-  #   image: httpd:latest
-  #   container_name: site
-  #   ports:
-  #   - '8080:80'
-  #   volumes:
-  #   - ./apache_website:/usr/local/apache2/htdocs
+  apache:
+    image: httpd:latest
+    container_name: site
+    ports:
+    - '8080:80'
+    volumes:
+    - ./apache_website:/usr/local/apache2/htdocs
 
 networks:
   private_network:
