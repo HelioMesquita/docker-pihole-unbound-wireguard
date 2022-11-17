@@ -30,8 +30,8 @@ services:
     image: mvance/unbound:latest
     hostname: syn-unbound
     ports:
-      - "53/tcp"
-      - "53/udp"
+      - "5335:53/tcp"
+      - "5335:53/udp"
     # volumes:
     #   - "./unbound:/opt/unbound/etc/unbound"
     restart: unless-stopped
@@ -49,13 +49,16 @@ services:
     volumes:
       - ./duck_files/:/config #optional
     restart: unless-stopped
-  apache:
-    image: httpd:latest
-    container_name: site
-    ports:
-    - '8080:80'
-    volumes:
-    - ./apache_website:/usr/local/apache2/htdocs
+  #   networks:
+  #     private_network:
+  #       ipv4_address: 10.2.0.300
+  # apache:
+  #   image: httpd:latest
+  #   container_name: site
+  #   ports:
+  #   - '8080:80'
+  #   volumes:
+  #   - ./apache_website:/usr/local/apache2/htdocs
 
 networks:
   private_network:
