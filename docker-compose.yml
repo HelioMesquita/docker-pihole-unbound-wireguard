@@ -21,7 +21,7 @@ services:
     volumes:
       - './pihole_files/etc-pihole:/etc/pihole'
       - './pihole_files/etc-dnsmasq.d:/etc/dnsmasq.d'
-    restart: unless-stopped
+    restart: always
     networks:
       private_network:
         ipv4_address: 10.2.0.100
@@ -46,9 +46,10 @@ services:
       - SUBDOMAINS=${SUBDOMAIN}
       - TOKEN=${DUCKTOKEN}
       - LOG_FILE=true
+      - IPV6=true
     volumes:
       - ./duck_files/:/config #optional
-    restart: unless-stopped
+    restart: always
   #   networks:
   #     private_network:
   #       ipv4_address: 10.2.0.300
